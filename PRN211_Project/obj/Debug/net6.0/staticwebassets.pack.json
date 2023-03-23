@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\PRN211_Project.bundle.scp.css"
     },
     {
+      "Id": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\dashboard.css",
+      "PackagePath": "staticwebassets\\css\\dashboard.css"
+    },
+    {
+      "Id": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
       "Id": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

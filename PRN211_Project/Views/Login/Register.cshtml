@@ -1,0 +1,41 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PRN211_Project.Models.Person
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form asp-action="Register" method="post">
+        <h3>Đăng Ký</h3>
+        <p style="color: red; margin-bottom:0px">@ViewBag.exist</p>
+        <label style="margin-top:0px" for="username">Username</label>
+        <input class="login" type="text" asp-for="Email" placeholder="Email or Phone" id="username" required>
+
+        <label for="password">Password</label>
+        <input class="login" type="password" asp-for="Password"  placeholder="Password" id="password" required>
+
+        <label for="password">Fullname</label>
+        <input  class="login" type="text" asp-for="Fullname" placeholder="Fullname" id="fullname" required>
+        <div style="display: flex; margin-top:10px">
+            <label style="margin-top:0px;margin-right:12px">Giới tính: </label>
+            <input checked asp-for="Gender" type="radio" value="Nam"/>Nam &nbsp
+            <input asp-for="Gender" type="radio" value="Nữ"/>Nữ
+        </div>
+        <button style="margin-top:18px">Đăng Ký</button>
+        <div style="margin-top:10px;display: flex; justify-content:end">
+            <a asp-action="Signin">Back To Login</a>
+        </div>
+    </form>
+</body>
+</html>

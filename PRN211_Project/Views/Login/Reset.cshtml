@@ -1,0 +1,33 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PRN211_Project.Models.Person
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Glassmorphism login Form Tutorial in html css</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form asp-action="Reset" method="post" style="height: 400px">
+        <h3>Reset Password</h3>
+        @if (ViewBag.text != null)
+        {
+            <p style="color: red; margin-bottom:0px">@ViewBag.text</p>
+        }
+        <label style="margin-top:0px" for="email">Enter Email</label>
+        <input class="login" asp-for="Email" type="email" placeholder="Email">
+        <button type="submit">Reset Password</button>
+        <div style="margin-top:10px;display: flex; justify-content:end">
+            <a asp-action="Signin">Back To Login</a>
+        </div>
+    </form>
+</body>
+</html>

@@ -26,7 +26,7 @@ namespace PRN211_Project.Models
             if (!optionsBuilder.IsConfigured)
             {
                 var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseSqlServer(config.GetConnectionString("ApDBConStr"));
+                optionsBuilder.UseSqlServer(config.GetConnectionString("Test"));
             }
         }
 
