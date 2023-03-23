@@ -66,3 +66,6 @@ D:\Study Materials\Code_C#\PRN211\PRN211_Project\obj\Debug\net6.0\refint\PRN211_
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\obj\Debug\net6.0\PRN211_Project.pdb
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\obj\Debug\net6.0\PRN211_Project.genruntimeconfig.cache
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\obj\Debug\net6.0\ref\PRN211_Project.dll
+D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\MailKit.dll
+D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\MimeKit.dll
+D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\BouncyCastle.Crypto.dll

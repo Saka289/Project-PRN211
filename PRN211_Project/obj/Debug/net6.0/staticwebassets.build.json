@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ArQ+ue2o+CaVvLdP5AdVZ9BYyHSoRNUk4KL3D+EEsss=",
+  "Hash": "CC0tZ/hDedyo0lWMWdV9lNHTXGDBjPZrgwHxtCAez2U=",
   "Source": "PRN211_Project",
   "BasePath": "_content/PRN211_Project",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PRN211_Project.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\dashboard.css",
+      "SourceId": "PRN211_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\",
+      "BasePath": "_content/PRN211_Project",
+      "RelativePath": "css/dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dashboard.css"
+    },
+    {
+      "Identity": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\login.css",
+      "SourceId": "PRN211_Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\",
+      "BasePath": "_content/PRN211_Project",
+      "RelativePath": "css/login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
       "Identity": "D:\\Study Materials\\Code_C#\\PRN211\\PRN211_Project\\wwwroot\\css\\site.css",
