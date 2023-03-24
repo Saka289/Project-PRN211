@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PRN211_Project.Models;
 using System.Collections.Specialized;
+using System.Text.Json;
 
 namespace PRN211_Project.Controllers
 {
@@ -8,17 +9,23 @@ namespace PRN211_Project.Controllers
     {
         public IActionResult GenreManagement()
         {
-            using (var context = new CenimaDBContext())
+            var user = (Person)JsonSerializer.Deserialize<Person>(HttpContext.Session.GetString("account"));
+            if (user.Type == 1)
             {
-                List<Genre> listG = context.Genres.ToList();
-                ViewBag.listG = listG;
-                if (TempData["shortMessage"] != null)
+                using (var context = new CenimaDBContext())
                 {
-                    ViewBag.Message = TempData["shortMessage"].ToString();
-                }
+                    List<Genre> listG = context.Genres.ToList();
+                    ViewBag.listG = listG;
+                    if (TempData["shortMessage"] != null)
+                    {
+                        ViewBag.Message = TempData["shortMessage"].ToString();
+                    }
 
-                return View(listG);
+                    return View(listG);
+                }
             }
+            ViewData["message"] = "Error 404 Not found!";
+            return View("../Shared/Error");
 
         }
 
@@ -80,7 +87,7 @@ namespace PRN211_Project.Controllers
                 string desc = this.Request.Form["des"];
                 Genre genre = new Genre()
                 {
-                    Description= desc
+                    Description = desc
                 };
                 context.Genres.Add(genre);
                 context.SaveChanges();
