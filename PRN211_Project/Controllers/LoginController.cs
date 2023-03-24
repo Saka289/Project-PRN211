@@ -28,7 +28,7 @@ namespace PRN211_Project.Controllers
 				var account = context.Persons.Where(a => a.Email == person.Email && a.Password == person.Password).SingleOrDefault();
 				if (account != null)
 				{
-					//HttpContext.Session.SetString("account", System.Text.Json.JsonSerializer.Serialize(account));
+					HttpContext.Session.SetString("account", System.Text.Json.JsonSerializer.Serialize(account));
 					return RedirectToAction("Index", "Home");
 				}
 				else

@@ -9,7 +9,12 @@ namespace PRN211_Project.Controllers
     {
         public IActionResult GenreManagement()
         {
-            var user = (Person)JsonSerializer.Deserialize<Person>(HttpContext.Session.GetString("account"));
+            Person user = new Person();
+            if (HttpContext.Session.GetString("account") != null)
+            {
+                user = (Person)JsonSerializer.Deserialize<Person>(HttpContext.Session.GetString("account"));
+            }
+
             if (user.Type == 1)
             {
                 using (var context = new CenimaDBContext())
