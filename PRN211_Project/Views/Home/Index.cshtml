@@ -1,65 +1,66 @@
 ﻿@{
- ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
 
 <div class="row">
-   <div class="col-lg-3">
-      <h1>Thể loại</h1>
-      <ul>
-   @foreach (Genre g in ViewBag.genres)
-   {
-          <li><a asp-action="index" asp-route-id="@g.GenreId">  @g.Description </a></li>
+    <div class="col-lg-3">
+        <h1>Thể loại</h1>
+        <ul>
+            @foreach (Genre g in ViewBag.genres)
+            {
+                <li><a asp-action="index" asp-route-id="@g.GenreId">  @g.Description </a></li>
 
 
-   }
-      </ul>
+            }
+        </ul>
 
-   </div>
-   <div class="col-lg-9">
-      <div class="row">
-   @foreach (Movie m in ViewBag.movies)
-   {
-          <div class="col-lg-3 " style="margin-bottom:30px;">
-             <div style="margin:5px;border-style: groove;">
-                <img src="~/image/@m.Image" style="width:100%;height:200px" />
-                <div style="padding:0px 20px;padding-bottom:30px;padding-top:20px">
-                   <h5 class="text-primary"> @m.Title </h5>
-                   <div>Năm: @m.Year</div>
-                   <div>Loại: @m.Genre.Description</div>
+    </div>
+    <div class="col-lg-9">
+        <div class="row">
+            @foreach (Movie m in ViewBag.movies)
+            {
+                <div class="col-lg-3 " style="margin-bottom:30px;">
+                    <div style="margin:5px;border-style: groove;">
+                        <img src="~/image/@m.Image" style="width:100%;height:200px" />
+                        <div style="padding:0px 20px;padding-bottom:30px;padding-top:20px">
+                            <h5 class="text-primary"> @m.Title </h5>
+                            <div>Năm: @m.Year</div>
+                            <div>Loại: @m.Genre.Description</div>
 
-                   <div>
-        @if (m.Rates.Count > 0)
-        {
-                       <p> Điểm: @($"{m.Rates.Average(r => r.NumericRating):N2}") </p>
-
-
-
-        }
-        //@
-        else
-        {
-                       <p> Chưa có đánh giá</p>
-        }
-                      <a class="d-flex justify-content-center" style="justify-content: center;" asp-action="Rate" asp-controller="ProductDetail" asp-route-id="@m.MovieId"><button type="button" class="btn btn-lg btn-primary" disabled>Đánh giá</button>  </a>
+                            <div>
+                                @if (m.Rates.Count > 0)
+                                {
+                                    <p> Điểm: @($"{m.Rates.Average(r => r.NumericRating):N2}") </p>
 
 
 
-                   </div>
+                                }
+                                //@
+                                else
+                                {
+                                    <p> Chưa có đánh giá</p>
+                                }
+                                <a class="d-flex justify-content-center" style="justify-content: center;" asp-action="movieDetail" asp-controller="ProductDetail" asp-route-movieId="@m.MovieId">
+                                    <button type="button" class="btn btn-lg btn-primary" disabled>Đánh giá</button>  </a>
+
+
+
+                            </div>
 
 
 
 
 
 
+                        </div>
+                    </div>
                 </div>
-             </div>
-          </div>
 
 
-   }
-      </div>
+            }
+        </div>
 
-   </div>
+    </div>
 </div>
 

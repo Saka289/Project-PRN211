@@ -1,0 +1,26 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model PRN211_Project.Models.Genre
+	<!-- Edit Modal HTML -->
+	<div id="editGenre-@Model.GenreId" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form asp-action="Edit" method="post">
+					<div class="modal-header">
+						<h4 class="modal-title">Edit Genre</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Description</label>
+							<input asp-for="Description" type="text" class="form-control" required>
+						</div>
+					</div>
+					<input type="hidden" asp-for="GenreId" />
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" value="Edit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

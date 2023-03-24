@@ -1,0 +1,51 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Text.Json
+@model PRN211_Project.Models.Rate
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="~/img/baongam.jpg" style="width: 100%; height:auto" />
+        </div>
+        <div class="col-md-7">
+            <div class="header"><h1>@ViewBag.Movie.Title</h1></div>
+            <div class="Content" style="border-bottom: solid 1px black">
+                <div>Thể loại: <span>@ViewBag.Movie.Genre.Description</span></div>
+                <div>Điểm đánh giá: <span>@ViewBag.NumericRate</span> </div>
+                <div>Mô tả: <span>@ViewBag.Movie.Description</span></div>
+                @if (Context.Session.GetString("account") == null)
+                {
+                    <form asp-controller="Login" asp-action="Register">
+                        <div><input type="submit" name="comment" value="Comment" class="btn-primary btn m-md-2" /> </div>
+                    </form>
+                }
+            </div>
+            @if (Context.Session.GetString("account") != null)
+            {
+                var user = (Person)JsonSerializer.Deserialize<Person>(Context.Session.GetString("account"));
+                <div class="insertComment">
+                    <h2>Chi tiết đánh giá:</h2>
+                    <form class="form-control" asp-action="comment" method="post">
+                        <div class="d-xl-flex">
+                            <span class="col-form-label">Điểm đánh giá </span><input asp-for="NumericRating">
+                            <span asp-validation-for="NumericRating"></span>
+                        </div>
+                        <div>
+                            <span class="col-form-label">Bình luận </span><textarea asp-for="Comment" class="input-group-lg h-auto w-100"></textarea>
+                        </div>
+                        <input type="hidden" asp-for="MovieId" value="@ViewBag.Movie.MovieId">
+                        <input type="submit" class="btn-primary btn m-md-2" value="Bình luận" />
+                    </form>
+                </div>
+            }
+
+            <div class="comment" style="border-bottom: solid 1px black">
+                <h2>Bình Luận</h2>
+                @foreach (var item in ViewBag.Rate)
+                {
+                    <div>@item.Person.Fullname: <span>@item.Comment</span></div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
