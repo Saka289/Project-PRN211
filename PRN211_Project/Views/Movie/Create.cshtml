@@ -1,0 +1,51 @@
+﻿@model PRN211_Project.Models.Movie
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+   <lable>Title</lable><br/>
+   <input asp-for="Title" /><br />
+   <span asp-validation-for="Title"></span><br />
+
+   <lable>Year</lable><br />
+   <input asp-for="Year" /><br />
+
+   <span asp-validation-for="Year"></span><br />
+
+  
+   <input type="hidden" asp-for="Image" value="ss"/> 
+
+   
+                  
+    <label asp-for="imageFile"></label>  
+    <input asp-for="imageFile" accept="image/*" onchange="document.getElementById('image').src=window.URL.createObjectURL(this.files[0])"/><br><br>  
+    <span asp-validation-for="imageFile"></span>
+     
+
+    <img src="" id="image" alt="Logo Image" width="150px" height="auto" style="border:1px;margin-left:120px;margin-top:30px";
+    <br/>
+    <br/>
+    <br/>
+   <br />
+
+
+   <lable>Description</lable><br />
+   <input asp-for="Description" /><br />
+
+   <span asp-validation-for="Description"></span><br />
+   @*<lable>Quantity per unit </lable>
+   <input asp-for="QuantityPerUnit" /></br>*@
+   <br/>
+
+   <lable>Genre </lable><br />
+
+   @*<select asp-for="GenreId" asp-items="ViewBag.GenreId">
+   </select><br />*@
+   <select asp-for="GenreId">
+      @foreach  (Genre g in ViewBag.Genres)
+      {
+         
+         <option value="@g.GenreId">@g.Description</option>
+      }
+   </select><br />
+   <input type="submit" value="Add" />
+</form>
