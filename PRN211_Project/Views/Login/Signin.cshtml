@@ -29,9 +29,10 @@
         <input class="login" type="password" asp-for="Password" placeholder="Password" required>
 
         <button type="submit">Đăng nhập</button>
-        <div class="social">
-          <div class="go"><i class="fab fa-google"></i>  Google</div>
-          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        <div style="display:flex;justify-content:center;" class="social">
+          <a href="@ViewBag.response">
+                <i style="font-size:30px" class="fab fa-google"></i>
+          </a> 
         </div>
         <div style="margin-top:10px;display: flex; justify-content:end">
             <a asp-action="Reset">quên mật khẩu</a>

@@ -69,3 +69,5 @@ D:\Study Materials\Code_C#\PRN211\PRN211_Project\obj\Debug\net6.0\ref\PRN211_Pro
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\MailKit.dll
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\MimeKit.dll
 D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\GoogleAuthentication.dll
+D:\Study Materials\Code_C#\PRN211\PRN211_Project\bin\Debug\net6.0\Newtonsoft.Json.dll
