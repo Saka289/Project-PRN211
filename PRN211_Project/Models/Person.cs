@@ -11,7 +11,7 @@ namespace PRN211_Project.Models
             Rates = new HashSet<Rate>();
         }
 
-        public int? PersonId { get; set; }
+        public int PersonId { get; set; }
         [Required]
 
         public string? Fullname { get; set; }
