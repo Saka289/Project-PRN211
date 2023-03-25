@@ -114,10 +114,18 @@ namespace PRN211_Project.Controllers
 			{
 				List<Genre> list = context.Genres.ToList();
 				var movie = context.Movies.Where(p => p.MovieId == id).SingleOrDefault();
+				if (movie == null)
+				{
+               TempData["Message"] = "Phim khong ton tai";
+               return View();
+
+				}
+				else { 
 				ViewData["GenreId"] = new SelectList(list, "GenreId", "Description");
 				ViewBag.image = "~/image/" + movie.Image;
 				return View(movie);
-			}
+            }
+         }
 		}
 		[HttpPost]
 		public async Task<IActionResult> Edit(Movie product)
@@ -246,15 +254,17 @@ namespace PRN211_Project.Controllers
 						context.Movies.Remove(m);
 						context.SaveChanges();
 						ViewBag.msg = "Delete successful";
-						return RedirectToAction("index");
+						//return RedirectToAction("index");
 					}
 				}
 				else
 				{
-					ViewBag.msg = "this movie have rate exist";
-					return View("../Error");
+               TempData["Message"] = "phim co danh gia";
+					
+					//return RedirectToAction("index");
+					
 
-				}
+            }
 				return RedirectToAction("index");
 
 
