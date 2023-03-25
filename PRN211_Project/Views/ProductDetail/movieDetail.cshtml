@@ -14,7 +14,7 @@
                 <div>Mô tả: <span>@ViewBag.Movie.Description</span></div>
                 @if (Context.Session.GetString("account") == null)
                 {
-                    <form asp-controller="Login" asp-action="Register">
+                    <form method="get" asp-controller="Login" asp-action="Signin">
                         <div><input type="submit" name="comment" value="Comment" class="btn-primary btn m-md-2" /> </div>
                     </form>
                 }
