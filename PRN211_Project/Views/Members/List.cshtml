@@ -25,7 +25,7 @@
 						<h2>Manage <b>Members</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Members</span></a>						
+						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Admin</span></a>						
 					</div>
 				</div>
 			</div>
@@ -36,6 +36,7 @@
 						<th>Gender</th>
 						<th>Email</th>
 						<th>Status</th>
+						<th style="text-align:center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,19 +45,24 @@
 							<td>@item.Fullname</td>
 							<td>@item.Gender</td>
 							<td>@item.Email</td>
-							<td style="text-align:center">
+							<td>
 								@if(item.IsActive == true)
 								{
-									<p style="margin: 0px" class="btn btn-success">Active</p>
+									<p style="margin: 0px;color:green">Active</p>
 								}
 								else
 								{
-									<p style="margin: 0px" class="btn btn-danger">Deactive</p>
+									<p style="margin: 0px;color:red">Deactive</p>
 								}
 							</td>
-							<td style="display:flex;justify-content:flex-end">
-								<a style="color:white" asp-action="Status" asp-route-id="1" asp-route-pid="@item.PersonId" class="btn btn-success">Active</a>
-								<a style="margin-left:12px;color:white" asp-action="Status" asp-route-id="0" asp-route-pid="@item.PersonId" class="btn btn-danger">Deactive </a>
+							<td>
+								<div style="display:flex;justify-content:end">
+										@if (item.Type != 1)
+										{
+											<a style="color:white" asp-action="Status" asp-route-id="1" asp-route-pid="@item.PersonId" class="btn btn-success">Active</a>
+											<a style="margin-left:12px;color:white" asp-action="Status" asp-route-id="0" asp-route-pid="@item.PersonId" class="btn btn-danger">Deactive </a>
+										}
+									</div>
 							</td>
 						</tr>
 					}
@@ -71,7 +77,7 @@
 		<div class="modal-content">
 			<form asp-action="Create" method="post">
 				<div class="modal-header">						
-					<h4 class="modal-title">Add Employee</h4>
+					<h4 class="modal-title">Add New Admin</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					
@@ -95,7 +101,6 @@
 					<div class="form-group">
 						<label>Role:</label>
 						<input asp-for="Type" type="radio" value="1" required>Admin
-						<input asp-for="Type" type="radio" value="2" required>User
 					</div>	
 					<div class="form-group">
 						<label>Status:</label>
