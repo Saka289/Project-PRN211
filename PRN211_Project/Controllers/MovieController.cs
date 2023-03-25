@@ -131,8 +131,8 @@ namespace PRN211_Project.Controllers
 				var movie = context.Movies.Where(p => p.MovieId == id).SingleOrDefault();
 				if (movie == null)
 				{
-					TempData["Message"] = "Phim khong ton tai";
-					return View();
+					TempData["MessageUpdate"] = "phim khong ton tai";
+					return RedirectToAction("Index");
 
 				}
 				else
@@ -161,13 +161,14 @@ namespace PRN211_Project.Controllers
 					}
 
 
-					product.Image = product.imageFile.FileName;
+					p.Image = product.imageFile.FileName;
 					p.Title = product.Title;
 
 					p.Description = product.Description;
 
 					p.GenreId = product.GenreId;
 					context.SaveChanges();
+					TempData["MessageUpdate"] = "Update Successful";
 					return RedirectToAction("Index");
 				}
 
@@ -269,7 +270,7 @@ namespace PRN211_Project.Controllers
 					{
 						context.Movies.Remove(m);
 						context.SaveChanges();
-						ViewBag.msg = "Delete successful";
+						TempData["MessageUpdate"] = "Delete Successful";
 						//return RedirectToAction("index");
 					}
 				}

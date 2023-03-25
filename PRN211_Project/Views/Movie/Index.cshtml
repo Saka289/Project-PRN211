@@ -111,9 +111,21 @@
 
 
 </table>*@
+@if (TempData["MessageUpdate"] != null)
+{
+	<p style="color: red; margin-bottom:0px">@TempData["MessageUpdate"]</p>
+}
+@if (TempData["MessageDelete"] != null)
+{
+	<p style="color: red; margin-bottom:0px">@TempData["MessageDelete"]</p>
+}
 @if (TempData["Message"] != null)
 {
 	<p style="color: red; margin-bottom:0px">@TempData["Message"]</p>
+}
+@if (ViewBag.msg!= null)
+{
+   <p style="color: red; margin-bottom:0px">@ViewBag.msg</p>
 }
 @ViewBag.msg
 <table class="table table-striped table-hover">
