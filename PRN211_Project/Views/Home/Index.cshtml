@@ -11,8 +11,6 @@
             @foreach (Genre g in ViewBag.genres)
             {
                 <li><a asp-action="index" asp-route-id="@g.GenreId">  @g.Description </a></li>
-
-
             }
         </ul>
 
@@ -43,32 +41,22 @@
                                     <p> Chưa có đánh giá</p>
                                 }
                                 <a class="d-flex justify-content-center" style="justify-content: center;" asp-action="movieDetail" asp-controller="ProductDetail" asp-route-movieId="@m.MovieId">
-                                    <button type="button" class="btn btn-lg btn-primary" disabled>Đánh giá</button>  </a>
-
-
-
+                                    <button type="button" class="btn btn-lg btn-primary" disabled>Đánh giá</button>
+                                </a>
                             </div>
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
-
-
             }
         </div>
     </div>
-    
+
 </div>
 @if (TempData["Message"] != null)
 {
-            <script>
-                   alert("Đã Đăng Nhập Tài Khoản Rồi !!!");
-                   </script>
-        }
+    <script>
+        alert("Đã Đăng Nhập Tài Khoản Rồi !!!");
+    </script>
+}
 
 
