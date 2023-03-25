@@ -9,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using static System.Net.WebRequestMethods;
-
+using System.Text.Json;
 
 namespace PRN211_Project.Controllers
 {
@@ -29,13 +29,28 @@ namespace PRN211_Project.Controllers
 			_logger = logger;
 			HostEnvironment = hostEnvironment;
 
+
+
 		}
 		public IActionResult Index()
 		{
 			using (var context = new CenimaDBContext())
 			{
 				List<Movie> movies = context.Movies.ToList();
+				Person user = new Person();
+				if (HttpContext.Session.GetString("account") != null)
+				{
+					user = (Person)JsonSerializer.Deserialize<Person>(HttpContext.Session.GetString("account"));
+					if (user.Type != 1)
+					{
+						return RedirectToAction("Signin", "Login");
+					}
+				}
+				else
+				{
+					return RedirectToAction("Signin", "Login");
 
+				}
 				return View(movies);
 			}
 
@@ -116,16 +131,17 @@ namespace PRN211_Project.Controllers
 				var movie = context.Movies.Where(p => p.MovieId == id).SingleOrDefault();
 				if (movie == null)
 				{
-               TempData["Message"] = "Phim khong ton tai";
-               return View();
+					TempData["Message"] = "Phim khong ton tai";
+					return View();
 
 				}
-				else { 
-				ViewData["GenreId"] = new SelectList(list, "GenreId", "Description");
-				ViewBag.image = "~/image/" + movie.Image;
-				return View(movie);
-            }
-         }
+				else
+				{
+					ViewData["GenreId"] = new SelectList(list, "GenreId", "Description");
+					ViewBag.image = "~/image/" + movie.Image;
+					return View(movie);
+				}
+			}
 		}
 		[HttpPost]
 		public async Task<IActionResult> Edit(Movie product)
@@ -244,7 +260,7 @@ namespace PRN211_Project.Controllers
 		{
 			using (var context = new CenimaDBContext())
 			{
-				
+
 				var rate = context.Rates.FirstOrDefault(p => p.MovieId == id);
 				if (rate == null)
 				{
@@ -259,12 +275,12 @@ namespace PRN211_Project.Controllers
 				}
 				else
 				{
-               TempData["Message"] = "phim co danh gia";
-					
-					//return RedirectToAction("index");
-					
+					TempData["Message"] = "phim co danh gia";
 
-            }
+					//return RedirectToAction("index");
+
+
+				}
 				return RedirectToAction("index");
 
 
