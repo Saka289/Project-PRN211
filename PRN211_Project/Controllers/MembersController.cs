@@ -1,19 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using System.Text.Json;
 namespace PRN211_Project.Controllers
 {
 	public class MembersController : Controller
 	{
 		public IActionResult List()
 		{
-			List<Person> listP = new List<Person>();
-			using (var context = new CenimaDBContext())
+            Person user = new Person();
+            if (HttpContext.Session.GetString("account") != null)
+            {
+                user = (Person)JsonSerializer.Deserialize<Person>(HttpContext.Session.GetString("account"));
+            }
+
+			if (user.Type == 1)
 			{
-				listP = context.Persons.ToList();
-				ViewBag.listP = listP;
+				List<Person> listP = new List<Person>();
+				using (var context = new CenimaDBContext())
+				{
+					listP = context.Persons.ToList();
+					ViewBag.listP = listP;
+				}
+				return View();
 			}
-			return View();
-		}
+            ViewData["message"] = "Error 404 Not found!";
+            return View("../Shared/Error");
+        }
 
 		public IActionResult Status(int id, int pid)
 		{
