@@ -15,7 +15,7 @@ namespace PRN211_Project.Controllers
                 var movie = context.Movies.Include(m => m.Genre).Include(m => m.Rates).SingleOrDefault(m => m.MovieId == movieId);
                 List<Rate> Rate = context.Rates.Include(m => m.Person).Where(m => m.MovieId == movieId && m.Person.IsActive == true).ToList();
                 ViewBag.Movie = movie;
-                
+                Rate rate = context.Rates.Where(r => r.MovieId== movieId && r.PersonId== personId).FirstOrDefault();    
                 if (movie.Rates.Count > 0)
                 {
                     ViewBag.NumericRate = movie.Rates.Average(r => r.NumericRating);
@@ -26,8 +26,9 @@ namespace PRN211_Project.Controllers
                 }
 
                 ViewBag.Rate = Rate;
+                return View(rate);
             }
-            return View();
+            
 
         }
         [HttpPost]

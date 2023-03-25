@@ -1,14 +1,12 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model PRN211_Project.Models.Person
-@{
-    Layout = null;
-}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Design by foolishdeveloper.com -->
+    <!-- Design by foolishdeveloper.com -->
     <title>Glassmorphism login Form Tutorial in html css</title>
- 
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -19,36 +17,41 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form style="height:620px" asp-action="Signin" method="post">
-        <h3>Đăng Nhập</h3>
-        @if (TempData["Message"] != null)
-        {
-            <p style="color: red; margin-bottom:0px">@TempData["Message"]</p>
-        }
-        <label style="margin-top:0px" for="username">Email</label>
-        <span asp-validation-for="Email"></span>
-        <input class="login" type="text" asp-for="Email"  placeholder="Email or Phone">
+    <<<<<<< HEAD
 
-        <label for="password">Password</label>
-        <span asp-validation-for="Password"></span>
-        <input class="login" type="password" asp-for="Password" placeholder="Password">
+    <div class="formLogin">
+        <form style="height:620px" asp-action="Signin" method="post">
+            <h3>Đăng Nhập</h3>
+            @if (TempData["Message"] != null)
+            {
+                <p style="color: red; margin-bottom:0px">@TempData["Message"]</p>
+            }
+            <label style="margin-top:0px" for="username">Email</label>
+            <span asp-validation-for="Email"></span>
+            <input class="login" type="text" asp-for="Email" placeholder="Email or Phone">
 
-        <button type="submit">Đăng nhập</button>
-        <div style="display:flex;justify-content:center;" class="social">
-          <a href="@ViewBag.response">
-                <i style="font-size:30px" class="fab fa-google"></i>
-          </a> 
-        </div>
-        <div style="margin-top:10px;display: flex; justify-content:end">
-            <a asp-action="Reset">quên mật khẩu</a>
-        </div>
-        <div style="margin-top:10px;display: flex; justify-content:center">
-            <p>Bạn chưa có tài khoản?<a asp-action="Register">Đăng ký</a></p>
-        </div>
-        <input type="hidden" asp-for="Fullname" value="1234"/>
-        <input type="hidden" asp-for="Gender" value="Nam"/>
-        <input type="hidden" asp-for="IsActive" value="true"/>
-        <input type="hidden" asp-for="Type" value="2"/>
-    </form>
+            <label for="password">Password</label>
+            <span asp-validation-for="Password"></span>
+            <input class="login" type="password" asp-for="Password" placeholder="Password">
+
+            <button type="submit">Đăng nhập</button>
+            <div style="display:flex;justify-content:center;" class="social">
+                <a href="@ViewBag.response">
+                    <i style="font-size:30px" class="fab fa-google"></i>
+                </a>
+            </div>
+            <div style="margin-top:10px;display: flex; justify-content:end">
+                <a asp-action="Reset">quên mật khẩu</a>
+            </div>
+            <div style="margin-top:10px;display: flex; justify-content:center">
+                <p>Bạn chưa có tài khoản?<a asp-action="Register">Đăng ký</a></p>
+            </div>
+            <input type="hidden" asp-for="Fullname" value="1234" />
+            <input type="hidden" asp-for="Gender" value="Nam" />
+            <input type="hidden" asp-for="IsActive" value="true" />
+            <input type="hidden" asp-for="Type" value="2" />
+        </form>
+    </div>
+   
 </body>
 </html>
