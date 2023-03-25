@@ -19,17 +19,20 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form asp-action="Register" method="post">
+    <form style="height:660px" asp-action="Register" method="post">
         <h3>Đăng Ký</h3>
         <p style="color: red; margin-bottom:0px">@ViewBag.exist</p>
-        <label style="margin-top:0px" for="username">Username</label>
-        <input class="login" type="text" asp-for="Email" placeholder="Email or Phone" id="username" required>
+        <label style="margin-top:0px" for="email">Email</label>
+        <span asp-validation-for="Email"></span>
+        <input class="login" type="text" asp-for="Email" placeholder="Email or Phone" id="username">
 
         <label for="password">Password</label>
-        <input class="login" type="password" asp-for="Password"  placeholder="Password" id="password" required>
+        <span asp-validation-for="Password"></span>
+        <input class="login" type="password" asp-for="Password"  placeholder="Password" id="password">
 
         <label for="password">Fullname</label>
-        <input  class="login" type="text" asp-for="Fullname" placeholder="Fullname" id="fullname" required>
+        <span asp-validation-for="Fullname"></span>
+        <input  class="login" type="text" asp-for="Fullname" placeholder="Fullname" id="fullname">
         <div style="display: flex; margin-top:10px">
             <label style="margin-top:0px;margin-right:12px">Giới tính: </label>
             <input checked asp-for="Gender" type="radio" value="Nam"/>Nam &nbsp

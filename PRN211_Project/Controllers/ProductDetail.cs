@@ -45,7 +45,7 @@ namespace PRN211_Project.Controllers
                     if (checkRate != null)
                     {
                         checkRate.MovieId = rate.MovieId;
-                        checkRate.PersonId = user.PersonId;
+                        checkRate.PersonId = (int)user.PersonId;
                         checkRate.NumericRating = rate.NumericRating;
                         checkRate.Comment = rate.Comment;
                         checkRate.Time = DateTime.Now;
@@ -54,7 +54,7 @@ namespace PRN211_Project.Controllers
                     else
                     {
                         rate.Time = DateTime.Now;
-                        rate.PersonId = user.PersonId;
+                        rate.PersonId = (int)user.PersonId;
                         context.Rates.Add(rate);
                         context.SaveChanges();
                     }

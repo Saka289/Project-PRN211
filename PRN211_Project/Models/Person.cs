@@ -11,21 +11,27 @@ namespace PRN211_Project.Models
             Rates = new HashSet<Rate>();
         }
 
-        public int PersonId { get; set; }
-        [Required]
+        public int? PersonId { get; set; }
 
-        public string? Fullname { get; set; }
-        [Required]
+		[Required]
+		[StringLength(50, MinimumLength = 3)]
+		public string? Fullname { get; set; }
 
+        [Required]
         public string? Gender { get; set; }
-        [Required]
 
-        public string? Email { get; set; }
-        [Required]
+		[Required]
+		[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+		public string Email { get; set; }
 
-        public string? Password { get; set; }
-        public int? Type { get; set; }
-        public bool? IsActive { get; set; }
+		[Required]
+		public string? Password { get; set; }
+
+		[Required]
+		public int? Type { get; set; }
+
+		[Required]
+		public bool? IsActive { get; set; }
 
         public virtual ICollection<Rate>? Rates { get; set; }
     }

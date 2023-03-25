@@ -19,17 +19,19 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form asp-action="Signin" method="post">
+    <form style="height:620px" asp-action="Signin" method="post">
         <h3>Đăng Nhập</h3>
         @if (TempData["Message"] != null)
         {
             <p style="color: red; margin-bottom:0px">@TempData["Message"]</p>
         }
         <label style="margin-top:0px" for="username">Email</label>
-        <input class="login" type="text" asp-for="Email"  placeholder="Email or Phone" required>
+        <span asp-validation-for="Email"></span>
+        <input class="login" type="text" asp-for="Email"  placeholder="Email or Phone">
 
         <label for="password">Password</label>
-        <input class="login" type="password" asp-for="Password" placeholder="Password" required>
+        <span asp-validation-for="Password"></span>
+        <input class="login" type="password" asp-for="Password" placeholder="Password">
 
         <button type="submit">Đăng nhập</button>
         <div style="display:flex;justify-content:center;" class="social">
@@ -43,6 +45,10 @@
         <div style="margin-top:10px;display: flex; justify-content:center">
             <p>Bạn chưa có tài khoản?<a asp-action="Register">Đăng ký</a></p>
         </div>
+        <input type="hidden" asp-for="Fullname" value="1234"/>
+        <input type="hidden" asp-for="Gender" value="Nam"/>
+        <input type="hidden" asp-for="IsActive" value="true"/>
+        <input type="hidden" asp-for="Type" value="2"/>
     </form>
 </body>
 </html>
