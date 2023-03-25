@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var temp = TempData["Message"];
 }
 
 
@@ -60,7 +61,14 @@
 
             }
         </div>
-
     </div>
+    
 </div>
+@if (TempData["Message"] != null)
+{
+            <script>
+                   alert("Đã Đăng Nhập Tài Khoản Rồi !!!");
+                   </script>
+        }
+
 
