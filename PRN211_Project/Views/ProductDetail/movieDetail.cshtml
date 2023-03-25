@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <img src="~/img/baongam.jpg" style="width: 100%; height:auto" />
+            <img src="~/image/@ViewBag.Movie.Image" style="width: 100%; height:auto" />
         </div>
         <div class="col-md-7">
             <div class="header"><h1>@ViewBag.Movie.Title</h1></div>
             <div class="Content" style="border-bottom: solid 1px black">
                 <div>Thể loại: <span>@ViewBag.Movie.Genre.Description</span></div>
-                <div>Điểm đánh giá: <span>@ViewBag.NumericRate</span> </div>
+                <div>Điểm đánh giá: <span>@($"{ViewBag.NumericRate:N2}")</span> </div>
                 <div>Mô tả: <span>@ViewBag.Movie.Description</span></div>
                 @if (Context.Session.GetString("account") == null)
                 {
@@ -28,6 +28,10 @@
                         <div class="d-xl-flex">
                             <span class="col-form-label">Điểm đánh giá </span><input asp-for="NumericRating">
                             <span asp-validation-for="NumericRating"></span>
+                            @if (TempData["erMessage"] != null)
+                            {
+                                <span style="color:red;">@TempData["erMessage"]</span>
+                            }
                         </div>
                         <div>
                             <span class="col-form-label">Bình luận </span><textarea asp-for="Comment" class="input-group-lg h-auto w-100"></textarea>
@@ -36,16 +40,29 @@
                         <input type="submit" class="btn-primary btn m-md-2" value="Bình luận" />
                     </form>
                 </div>
+                <div class="comment" style="border-bottom: solid 1px black">
+                    <h2>Bình Luận</h2>
+                    @foreach (var item in ViewBag.Rate)
+                    {
+                        <div style="display: flex">
+                            <div>@item.Person.Fullname: <span>@item.Comment</span></div> @if (item.Person.PersonId == user.PersonId)
+                            {
+                                <div>
+                                    <form asp-action="movieDetail" asp-controller="ProductDetail" asp-route-personId="@user.PersonId">
+                                        <input type="hidden" value="@item.Person.PersonId">
+                                        <input type="hidden" asp-for="MovieId" value="@ViewBag.Movie.MovieId">
+                                        <input type="submit" value="Comment" class="btn btn-primary">
+                                    </form>
+                                </div>
+                            }
+                        </div>
+                        
+                    }
+
+                </div>
             }
 
-            <div class="comment" style="border-bottom: solid 1px black">
-                <h2>Bình Luận</h2>
-                @foreach (var item in ViewBag.Rate)
-                {
-                    <div>@item.Person.Fullname: <span>@item.Comment</span></div>
-                }
 
-            </div>
         </div>
     </div>
 </div>
