@@ -8,13 +8,14 @@ namespace PRN211_Project.Controllers
 {
     public class ProductDetail : Controller
     {
-        public IActionResult movieDetail(int movieId)
+        public IActionResult movieDetail(int movieId, int personId)
         {
             using (var context = new CenimaDBContext())
             {
                 var movie = context.Movies.Include(m => m.Genre).Include(m => m.Rates).SingleOrDefault(m => m.MovieId == movieId);
-                List<Rate> Rate = context.Rates.Include(m => m.Person).Where(m => m.MovieId == movieId).ToList();
+                List<Rate> Rate = context.Rates.Include(m => m.Person).Where(m => m.MovieId == movieId && m.Person.IsActive == true).ToList();
                 ViewBag.Movie = movie;
+                
                 if (movie.Rates.Count > 0)
                 {
                     ViewBag.NumericRate = movie.Rates.Average(r => r.NumericRating);
@@ -34,6 +35,7 @@ namespace PRN211_Project.Controllers
         {
             if (!ModelState.IsValid)
             {
+                TempData["erMessage"] = "Invalid Rate!";
                 return RedirectToAction("movieDetail", new { movieId = rate.MovieId });
             }
             using (var context = new CenimaDBContext())
